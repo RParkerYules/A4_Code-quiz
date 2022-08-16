@@ -12,7 +12,7 @@ var spChar = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "
 // This variable is used for the concanation of the variables later
 var choices = [];
 var passwordLength = 8;
-var password = "";
+var password = [];
 
 
 // Generate the password that will be displayed on screen
