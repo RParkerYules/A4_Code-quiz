@@ -1,5 +1,6 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+// Global variable defining the function "Generate"
+var generateBtn = document.querySelector("#generatePassword");
+
 // Array containing numbers from 0 to 1
 var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 // Array containing letters from A to Z in uppercase
@@ -20,34 +21,31 @@ function writePassword() {
   passwordText.value = password;
 
 }
-
+// This next section tells the user to add a number from 8-20 to select the number of chars in their password.
 function generatePassword() {
-  // This next line of code is used to tell the user to add a value, and if they don't add a correct value. They will be reminded.
+// The while loop continually loops through this block of code as long as the condition is true.
   while (true) {
-    var lengthPrompt = prompt("Password Length: Enter between 8 to 20 to define characters.");
+    var lengthPrompt = prompt("Pleae enter a number between 8 to 20 for password length.");
+    
     if (!lengthPrompt) {
       alert("Please add a value");
-    } else if (lengthPrompt < 8 || lengthPrompt > 20) {
-      prompt("Please add a value higher than 8 or lower than 20");
-    
+
+    if (lengthPrompt < 8 || lengthPrompt > 20) {
+        prompt("Please add a value higher than 8 or lower than 20");
+  
+    if (length => 8 || length <= 20) break;
+
+    return lengthVal;
+
   }
-  // There is a problem here, as the app is asking me to enter the numbet of chars, I enter them and it asks again.
-  // Then when I insert the second input it accepts, but doesn't run the code below to generate the password
-  // I need to fix that bug, and then add the logic to generate a random password
-
-
-
-
 
   // empty array that will contain the new empty password
   var randomPassword = [];
   // This next line of code is the loop requiered for the generation of the password
-  for (var i = 0; i < lengthPrompt; i++) {
+  for (var i = 0; i < lengthVal; i++) {
     var allChoices = choices[Math.floor(Math.random() * choices.length)];
     randomPassword.push(allChoices);
   }
   return randomPassword.join("");
-}
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+
