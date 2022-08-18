@@ -10,10 +10,6 @@ var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 // Array containing the special characters for the password
 var spChar = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 
-
-
-
-
 // Code to write the randomly generated password to the screen; Initiated via 'click' in HTML;
 
 function writePassword() {
@@ -21,11 +17,9 @@ function writePassword() {
 
     var passwordText = document.querySelector("#password");
       passwordText.value = password;
-
 }
 
 generateBtn.addEventListener("click", writePassword)
-
 
 // This next section tells the user to add a number from 8-128 to select the number of chars in their password.
 
@@ -76,17 +70,17 @@ var lengthPrompt = "";
     let includeUpperCase = window.confirm ("Would you like to include Upper Case characters?");
 
     if (includeUpperCase) {
-      choices = choices.concat(lowerCase);
+      choices = choices.concat(upperCase);
     }
 
 // ask if user wants to include special characters
     let includeSpChar = window.confirm ("Would you like to include Special Characters?");
 
     if (includeSpChar) {
-      choices = choices.concat(lowerCase);
+      choices = choices.concat(spChar);
     }
     
- var totalChoices = choices.length  
+  var totalChoices = choices.length  
 
 
 // Function that will generate the new password - length is the number of chars entered

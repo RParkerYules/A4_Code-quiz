@@ -1,100 +1,72 @@
-# 03 JavaScript: Password Generator
+# Assignment 3: JavaScript Password Generator
 
-## Your Task
+## Description
 
-This week's Challenge requires you to modify starter code to create an application that enables employees to generate random passwords based on criteria that they’ve selected. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished, responsive user interface that adapts to multiple screen sizes.
+The Password Generator has been designed to meet the specifications provided. It includes a web interface written in HTML (supplied code), which allows a user to select a number of parameters before generating a randomly generated password of 8 to 128 characters. 
 
-The password can include special characters. If you’re unfamiliar with these, see this [list of password special characters](https://www.owasp.org/index.php/Password_special_characters) from the OWASP Foundation.
+## Planned Development
 
-## User Story
+This password generator has been developed in stages, to enable me to develop some basic Javascript code that doesn't produce errors, and then add the functionality one step at a time, and then test that functionality to make sure it works, before adding the next lot of code.
 
-```
-AS AN employee with access to sensitive data
-I WANT to randomly generate a password that meets certain criteria
-SO THAT I can create a strong password that provides greater security
-```
+I started with a number of arrays that included Numbers, Upper Case, Lower Case and Special Characters. 
 
-## Acceptance Criteria
+I then added some code to concatinate these into an all inclusive array, and added the code to open a window and prompt the user to enter a number between 8 & 20 characters, with a number of error conditions including:
+    . No Entry;
+    . Less than 8 or more than 20; and
+    . Alpha chars instead of a number.
 
-```
-GIVEN I need a new, secure password
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-WHEN asked for character types to include in the password
-THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
-```
+This was done using a 'while loop', which worked but had a bug where, if I entered an incorrect choice, it kept asking me to enter a number between 8 & 20, even after I entered a correct number. The variable 'lengthPrompt' was incorrectly defined, and once this was resolved the code worked as expected, all error test cases worked as expected, and when a valid number was eventually added it generated a randomly selected password the correct length.
 
-## Mock-Up
+During a tutor session, my tutor suggested that I modify the HTML to include a 'click' function to activate 'writePassword', which worked for the initial version. However, as I soo discovered, this failed when I implemented the next lot of code. 
 
-The following image shows the web application's appearance and functionality:
+I then deleted the code to concatinate the characters, and added the code to prompt the user to select if they wanted to include Numbers, Upper Case, Lower Case and Special Characters. The first version displayed the correct prompts in the window, but after the last prompt npothing happened. 
 
-![The Password Generator application displays a red button to "Generate Password".](./Assets/03-javascript-homework-demo.png)
+This bug was diagnosed and resolved. The issue was due to a mistake, where I used the variable names (number, upperCase, LowerCase & spChar) instead of parameters. I changed these to 'includeNumber', 'includeUpperCase', 'includeLowerCase' and 'includeSpChar'. 
 
-## Grading Requirements
+This also failed. With some support I added 'lenghthPrompt = parsInt(lengthPrompt), which appeared to work but did not generate a password.
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
+With some additional assistance in "office hours" we discovered the EventListener was not defined in the Javascript, because it was defined in the HTML, which did not work with the additional code. I then put the HTML back to the original code, and added "generateBtn.addEventListener("click", writePassword)" into line 22 of the Javascript, and this resolved the issue. 
 
-This Challenge is graded based on the following criteria: 
+I am now able to run all test cases, including testing error conditions, and it now performs as it was intended. 
 
-### Technical Acceptance Criteria: 40%
+## Credits
 
-* Satisfies all of the preceding acceptance criteria.
+I need to thank Dan for helping me to debug the last two issues during office hours. I learnt a lot through that process.  
 
-### Deployment: 32%
+## Features
 
-* Application deployed at live URL.
+The features of the Password Generator are:
 
-* Application loads with no errors.
+    . The user can create a randomly generated password between 8 and 128 chars;
+    . The user is then prompted to choose if they want to include Numbers;
+    . The user is then prompted to choose if they want to include Lower Case;   
+    . The user is then prompted to choose if they want to include Upper Case;
+    . The user is then prompted to choose if they want to include Special Characters;
+    . If the user does not enter any number, or if they enter a number less than 8, or if they enter a number greater than 128 - an appropriate message is displayed.
 
-* Application GitHub URL submitted.
 
-* GitHub repository that contains application code.
+ 
 
-### Application Quality: 15%
 
-* Application user experience is intuitive and easy to navigate.
+ 
 
-* Application user interface style is clean and polished.
+ 
 
-* Application resembles the mock-up functionality provided in the Challenge instructions.
 
-### Repository Quality: 13%
 
-* Repository has a unique name.
 
-* Repository follows best practices for file structure and naming conventions.
 
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
 
-* Repository contains multiple descriptive commit messages.
 
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
 
-## Review
+ 
 
-You are required to submit the following for review:
 
-* The URL of the deployed application.
 
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
 
-- - -
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+
+
+
+
+
+
