@@ -10,47 +10,88 @@ var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 // Array containing the special characters for the password
 var spChar = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 
-// This variable is used to concanate the numbers, upper case, lower case & special characters into one string
-
-var choices = (upperCase.concat(number).concat(spChar).concat(lowerCase));
-var totalChoices = choices.length
 
 
-// Code to write the randomly generated password to the screen; 
-// Initiated via 'click' in HTML;
+
+
+// Code to write the randomly generated password to the screen; Initiated via 'click' in HTML;
+
 function writePassword() {
-  var password = generatePassword();
-  console.log(password);
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
+    var password = generatePassword();
+
+    var passwordText = document.querySelector("#password");
+      passwordText.value = password;
 
 }
 
+generateBtn.addEventListener("click", writePassword)
 
-// This next section tells the user to add a number from 8-20 to select the number of chars in their password.
+
+// This next section tells the user to add a number from 8-128 to select the number of chars in their password.
+
 function generatePassword() {
-// The while loop continually loops through this block of code as long as the condition is true.
+
+var lengthPrompt = "";
+
   while (true) {
-    var lengthPrompt = prompt("Pleae enter a number between 8 to 20 for password length.");
+    var lengthPrompt = prompt("Pleae enter a number between 8 to 128 for password length.");
 
 // If no input, then prompt to entewr a value
     if (!lengthPrompt) {
-      prompt("Please add a value");
+      lengthPrompt = prompt("Please add a value");
     }    
 
-// If a number less than 8, greater than 20, or a special char is entered, then this applies
-    if (lengthPrompt < 8 || lengthPrompt > 20) {
-      prompt("Please add a value higher than 8 or lower than 20");
-  }
+// If a number less than 8, greater than 128, or a special char is entered, then this applies
+    if (lengthPrompt < 8 || lengthPrompt > 128) {
+      lengthPrompt = prompt("Please add a value higher than 8 or lower than 128");
+    }
 
 // If a valid number is entered, then this applies
-  if (lengthPrompt >= 8 && lengthPrompt <= 20) {
+    if (lengthPrompt >= 8 && lengthPrompt <= 128) {
       break;
     } 
   }
 
+  lengthPrompt = parseInt(lengthPrompt);
+
+  console.log(lengthPrompt)
+
+  var choices = []
+
+// ask if user wants to include numbers
+    let includeNumbers = window.confirm ("Would you like to include Numbers?");
+
+      if (includeNumbers) {
+        choices = choices.concat(number);
+    }
+
+// ask if user wants to include lower case
+    let includeLowerCase = window.confirm ("Would you like to include Lower Case characters?");
+
+      if (includeLowerCase) {
+        choices = choices.concat(lowerCase);
+    }
+
+// ask if user wants to include upper case
+    let includeUpperCase = window.confirm ("Would you like to include Upper Case characters?");
+
+    if (includeUpperCase) {
+      choices = choices.concat(lowerCase);
+    }
+
+// ask if user wants to include special characters
+    let includeSpChar = window.confirm ("Would you like to include Special Characters?");
+
+    if (includeSpChar) {
+      choices = choices.concat(lowerCase);
+    }
+    
+ var totalChoices = choices.length  
+
+
 // Function that will generate the new password - length is the number of chars entered
   var randomPassword = [];
+  
 
 // This next line of code is the loop requiered for the generation of the password
   for (var i = 0; i < lengthPrompt; i++) {
@@ -58,6 +99,9 @@ function generatePassword() {
     
     randomPassword.push(randomChoice);
   }
+
+  console.log(randomPassword);
+
 // Display the randomly generated password
   return randomPassword.join("");
 }
