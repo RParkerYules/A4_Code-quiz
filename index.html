@@ -4,31 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
+    <title>Coding Quiz Challenge</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
+      
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Password Generator</h1>
-      </header>
-      <div class="card">
-        <div class="card-header">
-          <h2>Generate a Password</h2>
+    
+    <section>
+        <h1 class="title-centre">Coding Quiz Challenge</h1>
+        <h2 class="text-centre">Try to answer the following code-related questions within the time limit.</h2>
+        <h2 class="text-centre">Keep in mind that incorrect answers will penalise your score time by 15 seconds.</h2>
+    </section>
+
+
+    <section id="control-box">
+        <div>
+          <ul>
+              <li class="link"><a href="#high-scores">View High Scores</a></li>
+          </ul>
+        </div>   
+        <div>
+            <button class="start-button">Start</button>     
         </div>
-        <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
-        </div>
-        <div class="card-footer">
-          <button id="generatePassword" class="btn">Generate Password</button>
-        </div>
-      </div>
-    </div>
-    <script src="script.js"></script>
+    </section>
+
   </body>
 </html>
