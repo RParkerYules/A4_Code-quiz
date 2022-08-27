@@ -37,18 +37,31 @@ h2 {
   margin-top: 10px;
 }
 
+.text-right {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.container {
+  display: inline;
+  top: 200px;
+  left: 50px;
+  width: 60%;
+  color: #5c7998;
+}
 
 .link {
   position: relative;
-  margin-top: 200px;
-  margin-left: 200px;
+  float: Left;
   font-size: 20px;
   color: #5c7998;
 }
 
+/* Buttom & Timer need to be configured*/
+
 button {
   margin-top: 0px;
-  margin-left: 600px;
+  margin-left: 40px;
   height: 40px;
   width: 120px;
   background-color:rgb(20, 41, 63);
@@ -57,3 +70,9 @@ button {
 
 }
 
+.timer {
+  position: relative;
+  float: Right;
+  font-size: 20px;
+  color: #5c7998;
+}
